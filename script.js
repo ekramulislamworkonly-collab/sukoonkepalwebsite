@@ -2,7 +2,14 @@ let player = new Audio();
 let currentSongIndex = -1;
 
 const songs = [
-    { title: "Chithi Na Koi Sandesh (Streaming)", file: "https://koshalworld.com/files/download/type/320/id/37605" }
+    { title: "Suno Kaho Kaha Suna", file: "https://koshalworld.com/files/download/type/320/id/28972" },
+    { title: "Mere Sathi Ho Jeevan Sathi", file: "https://koshalworld.com/files/download/type/320/id/30163" },
+    { title: "Humne Tumko Dekha", file: "https://koshalworld.com/files/download/type/320/id/29801" },
+    { title: "Dil Cheez Kya Hai", file: "https://koshalworld.com/files/download/type/320/id/31298" },
+    { title: "Aur Sunao Kya Haal Hai", file: "https://koshalworld.com/files/download/type/320/id/37195" },
+    { title: "Yeh Duniya Yeh Mehfil Mere Kaam Ki Nahi", file: "https://koshalworld.com/files/download/type/320/id/37196" },
+    { title: "Chhodo Kal Ki Baatein", file: "https://koshalworld.com/files/download/type/320/id/37699" },
+    { title: "Tujhe Jeevan Ki Dor Se", file: "https://koshalworld.com/files/download/type/320/id/38153" }
 ];
 
 let progressInterval;
