@@ -1,16 +1,56 @@
 let player = new Audio();
 let currentSongIndex = -1;
 
-const songs = [
-    { title: "Suno Kaho Kaha Suna", file: "https://koshalworld.com/files/download/type/320/id/28972" },
-    { title: "Mere Sathi Ho Jeevan Sathi", file: "https://koshalworld.com/files/download/type/320/id/30163" },
-    { title: "Humne Tumko Dekha", file: "https://koshalworld.com/files/download/type/320/id/29801" },
-    { title: "Dil Cheez Kya Hai", file: "https://koshalworld.com/files/download/type/320/id/31298" },
-    { title: "Aur Sunao Kya Haal Hai", file: "https://koshalworld.com/files/download/type/320/id/37195" },
-    { title: "Yeh Duniya Yeh Mehfil Mere Kaam Ki Nahi", file: "https://koshalworld.com/files/download/type/320/id/37196" },
-    { title: "Chhodo Kal Ki Baatein", file: "https://koshalworld.com/files/download/type/320/id/37699" },
-    { title: "Tujhe Jeevan Ki Dor Se", file: "https://koshalworld.com/files/download/type/320/id/38153" }
-];
+const songs = [];
+
+async function loadSongs() {
+    try {
+        const response = await fetch('songslinks.txt');
+        const text = await response.text();
+        const urls = text.split('\n').filter(line => line.trim() !== '');
+        
+        const tempSongs = [];
+        for (const url of urls) {
+            // Check if it's a KoshalWorld download link
+            if (url.includes('koshalworld.com/download/')) {
+                const parts = url.split('/');
+                const id = parts[parts.length - 2];
+                const rawTitle = parts[parts.length - 1].replace('.html', '');
+                
+                // Format title (e.g. suno-kaho -> Suno Kaho)
+                const title = rawTitle.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                
+                tempSongs.push({
+                    title: title,
+                    file: `https://koshalworld.com/files/download/type/320/id/${id}`
+                });
+            } else if (url.includes('koshalworld.com/files/download/')) {
+                // If they pasted the direct link directly
+                tempSongs.push({
+                    title: "Unknown Song",
+                    file: url.trim()
+                });
+            }
+        }
+        
+        // Filter out exact duplicates
+        const seen = new Set();
+        for (const song of tempSongs) {
+            if (!seen.has(song.file)) {
+                seen.add(song.file);
+                songs.push(song);
+            }
+        }
+        
+        updateStatus("Playlist loaded. Ready to play.");
+    } catch (e) {
+        updateStatus("Error loading songs from text file.");
+        console.error(e);
+    }
+}
+
+// Load songs on startup
+loadSongs();
 
 let progressInterval;
 
