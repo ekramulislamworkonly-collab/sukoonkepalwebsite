@@ -1,0 +1,258 @@
+:root {
+    --primary-color: #ff3b30;
+    --bg-gradient-1: #1a0b2e;
+    --bg-gradient-2: #3a1c71;
+    --bg-gradient-3: #d76d77;
+    --bg-gradient-4: #ffaf7b;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-gradient-1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('SONGAPP BACKGROUND.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.glass-container {
+    background: transparent;
+    border: none;
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 2.5rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+
+.input-group {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    flex-direction: column;
+}
+
+@media (min-width: 480px) {
+    .input-group {
+        flex-direction: row;
+    }
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
+    color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(255, 59, 48, 0.3);
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+button {
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #ff5247;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 59, 48, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.player-wrapper {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.player-wrapper.active {
+    display: block;
+}
+
+#player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--primary-color);
+    border-radius: 3px;
+    transition: width 0.1s linear;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    color: white;
+}
+
+.control-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.control-btn.play-btn {
+    width: 64px;
+    height: 64px;
+    background: var(--primary-color);
+    border: none;
+}
+
+.control-btn.play-btn svg {
+    width: 32px;
+    height: 32px;
+}
+
+.control-btn.play-btn:hover {
+    background: #ff5247;
+    box-shadow: 0 0 20px rgba(255, 59, 48, 0.5);
+}
+
+.status-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    min-height: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .glass-container {
+        padding: 24px;
+        border-radius: 16px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .control-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .control-btn.play-btn {
+        width: 54px;
+        height: 54px;
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    z-index: 10;
+}
