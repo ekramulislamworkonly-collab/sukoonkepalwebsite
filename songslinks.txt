@@ -40,8 +40,6 @@ https://koshalworld.com/download/87704/koi-dil-dukhaye-na-aise-kisika.html
 
 https://koshalworld.com/download/46217/tujhko-na-dekhun.html
 
-https://koshalworld.com/download/46216/main-sehra-bandh-ke-aaunga.html
-
 https://koshalworld.com/download/46215/kore-kore-sapne-mere.html
 
 https://koshalworld.com/download/46214/do-dil-mil-rahe-hai.html
