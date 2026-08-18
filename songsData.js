@@ -1,6 +1,4 @@
-const songsDataText = `https://koshalworld.com/download/46078/tujhe-rab-ne-banaya-kis-liye.html
-
-https://koshalworld.com/download/28972/suno-kaho-kaha-suna.html
+const songsDataText = `https://koshalworld.com/download/28972/suno-kaho-kaha-suna.html
 
 https://koshalworld.com/download/30163/mere-sathi-ho-jeevan-sathi.html
 
