@@ -5,8 +5,10 @@ const songs = [];
 
 async function loadSongs() {
     try {
-        const response = await fetch('songslinks.txt');
-        const text = await response.text();
+        if (typeof songsDataText === 'undefined') {
+            throw new Error("songsData.js is missing or not loaded correctly.");
+        }
+        const text = songsDataText;
         const urls = text.split('\n').filter(line => line.trim() !== '');
         
         const tempSongs = [];
@@ -81,22 +83,28 @@ function updateProgress() {
     }
 }
 
-function playRandomSong() {
+function playSong(index) {
     if (songs.length === 0) return;
     
-    let randomIndex;
-    if (songs.length === 1) {
-        randomIndex = 0;
-    } else {
-        do {
-            randomIndex = Math.floor(Math.random() * songs.length);
-        } while (randomIndex === currentSongIndex && songs.length > 1);
-    }
-    
-    currentSongIndex = randomIndex;
+    currentSongIndex = index;
     const song = songs[currentSongIndex];
     player.src = song.file;
     player.play();
+}
+
+function playNextSong() {
+    if (songs.length === 0) return;
+    let nextIndex = (currentSongIndex + 1) % songs.length;
+    playSong(nextIndex);
+}
+
+function playPrevSong() {
+    if (songs.length === 0) return;
+    let prevIndex = currentSongIndex - 1;
+    if (prevIndex < 0) {
+        prevIndex = songs.length - 1;
+    }
+    playSong(prevIndex);
 }
 
 player.addEventListener('play', () => {
@@ -123,20 +131,20 @@ player.addEventListener('pause', () => {
 
 player.addEventListener('ended', () => {
     clearInterval(progressInterval);
-    playRandomSong();
+    playNextSong();
 });
 
 player.addEventListener('error', () => {
     updateStatus("Error playing audio. Skipping...");
     setTimeout(() => {
-        playRandomSong();
+        playNextSong();
     }, 2000);
 });
 
 // Controls
 document.getElementById('play-pause-btn').addEventListener('click', () => {
     if (currentSongIndex === -1) {
-        playRandomSong();
+        playSong(0);
     } else if (player.paused) {
         player.play();
     } else {
@@ -145,11 +153,11 @@ document.getElementById('play-pause-btn').addEventListener('click', () => {
 });
 
 document.getElementById('next-btn').addEventListener('click', () => {
-    playRandomSong();
+    playNextSong();
 });
 
 document.getElementById('prev-btn').addEventListener('click', () => {
-    playRandomSong();
+    playPrevSong();
 });
 
 document.getElementById('progress-container').addEventListener('click', (e) => {
@@ -175,10 +183,10 @@ if ('mediaSession' in navigator) {
         player.pause();
     });
     navigator.mediaSession.setActionHandler('previoustrack', () => {
-        playRandomSong();
+        playPrevSong();
     });
     navigator.mediaSession.setActionHandler('nexttrack', () => {
-        playRandomSong();
+        playNextSong();
     });
 }
 
