@@ -6,11 +6,7 @@ https://koshalworld.com/download/29801/humne-tumko-dekha.html
 
 https://koshalworld.com/download/31298/dil-cheez-kya-hai.html
 
-https://koshalworld.com/download/37195/aur-sunao-kya-haal-hai.html
-
 https://koshalworld.com/download/37196/yeh-duniya-yeh-mehfil-mere-kaam-ki-nahi.html
-
-https://koshalworld.com/download/37699/chhodo-kal-ki-baatein.html
 
 https://koshalworld.com/download/37699/chhodo-kal-ki-baatein.html
 
