@@ -1,32 +1,22 @@
 const songsDataText = `https://koshalworld.com/download/46090/is-pyar-se-meri-taraf-na-dekho-male-version-.html
 
-https://koshalworld.com/download/28972/suno-kaho-kaha-suna.html
-
-https://koshalworld.com/download/30163/mere-sathi-ho-jeevan-sathi.html
-
-https://koshalworld.com/download/29801/humne-tumko-dekha.html
+https://koshalworld.com/download/27899/diwana-hua-badal.html | 11
 
 https://koshalworld.com/download/31298/dil-cheez-kya-hai.html
 
-https://koshalworld.com/download/37196/yeh-duniya-yeh-mehfil-mere-kaam-ki-nahi.html
+https://koshalworld.com/download/37195/aur-sunao-kya-haal-hai.html | 5
 
-https://koshalworld.com/download/37699/chhodo-kal-ki-baatein.html
+https://koshalworld.com/download/37196/yeh-duniya-yeh-mehfil-mere-kaam-ki-nahi.html | 5
 
-https://koshalworld.com/download/38153/tujhe-jeevan-ki-dor-se.html
-
-https://koshalworld.com/download/27756/man-dole-mere-tan-dole.html
-
-https://koshalworld.com/download/27757/jadugar-saiyan.html
+https://koshalworld.com/download/38153/tujhe-jeevan-ki-dor-se.html | 31
 
 https://koshalworld.com/download/27758/koyal-bole-duniya-dole.html
 
-https://koshalworld.com/download/27759/parbat-ke-is-paar-parbat-ke-us-paar.html
+https://koshalworld.com/download/27759/parbat-ke-is-paar-parbat-ke-us-paar.html | 6
 
-https://koshalworld.com/download/27897/goriyan-kahan-tere-des-re.html
+https://koshalworld.com/download/27897/goriyan-kahan-tere-des-re.html | 45
 
-https://koshalworld.com/download/27898/tere-naam-ka-diwana.html
-
-https://koshalworld.com/download/27899/diwana-hua-badal.html
+https://koshalworld.com/download/27898/tere-naam-ka-diwana.html | 18
 
 https://koshalworld.com/download/27926/tere-bina-jiya-jaye-na.html
 
@@ -108,5 +98,5 @@ https://koshalworld.com/download/24814/meri-sanson-mein-basa-hai.html
 
 https://koshalworld.com/download/24694/dil-kehta-hai-chal-unse-mil.html
 
-https://koshalworld.com/download/24632/baazigar-o-baazigar.html
+https://koshalworld.com/download/24632/baazigar-o-baazigar.html | 14
 `;

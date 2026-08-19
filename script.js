@@ -9,10 +9,14 @@ async function loadSongs() {
             throw new Error("songsData.js is missing or not loaded correctly.");
         }
         const text = songsDataText;
-        const urls = text.split('\n').filter(line => line.trim() !== '');
+        const lines = text.split('\n').filter(line => line.trim() !== '');
         
         const tempSongs = [];
-        for (const url of urls) {
+        for (const line of lines) {
+            const lineParts = line.split('|');
+            const url = lineParts[0].trim();
+            const startTime = lineParts.length > 1 ? parseFloat(lineParts[1].trim()) : 0;
+
             // Check if it's a KoshalWorld download link
             if (url.includes('koshalworld.com/download/')) {
                 const parts = url.split('/');
@@ -24,13 +28,15 @@ async function loadSongs() {
                 
                 tempSongs.push({
                     title: title,
-                    file: `https://koshalworld.com/files/download/type/320/id/${id}`
+                    file: `https://koshalworld.com/files/download/type/320/id/${id}`,
+                    startTime: startTime
                 });
             } else if (url.includes('koshalworld.com/files/download/')) {
                 // If they pasted the direct link directly
                 tempSongs.push({
                     title: "Unknown Song",
-                    file: url.trim()
+                    file: url,
+                    startTime: startTime
                 });
             }
         }
@@ -106,6 +112,15 @@ function playPrevSong() {
     }
     playSong(prevIndex);
 }
+
+player.addEventListener('loadedmetadata', () => {
+    if (currentSongIndex !== -1) {
+        const song = songs[currentSongIndex];
+        if (song.startTime > 0) {
+            player.currentTime = song.startTime;
+        }
+    }
+});
 
 player.addEventListener('play', () => {
     document.getElementById('play-icon').style.display = 'none';
